@@ -41,3 +41,5 @@ for root, _, files in os.walk(sample_data_path):
 
 
 data_structure = pd.DataFrame(data_structure)
+
+data_structure.to_excel('df.xlsx')
