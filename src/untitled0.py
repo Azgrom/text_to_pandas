@@ -32,9 +32,12 @@ for root, _, files in os.walk(sample_data_path):
         with open(f'{root}/{report}', 'rt') as f:
             data_structure['title'].append(f.readline())
             data_structure['author'].append(f.readline())
-            data_structure['date_published'].append(f.readline())
+            date_published = dt.datetime.strptime(f.readline().split()[1],
+                                                  '%Y-%m-%dT%H:%M:%SZ')
             data_structure['link'].append(f.readline())
             data_structure['content'].append(f.readlines())
+
+        data_structure['date_published'] = date_published
 
 
 data_structure = pd.DataFrame(data_structure)
